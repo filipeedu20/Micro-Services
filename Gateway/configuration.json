@@ -1,0 +1,124 @@
+{
+    "ReRoutes": [
+      {
+        "DownstreamPathTemplate": "/",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "127.0.0.1",
+            "Port": 7000
+          }
+        ],
+        "UpstreamPathTemplate": "/pedido/",
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
+      },
+      {
+        "DownstreamPathTemplate": "/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "127.0.0.1",
+            "Port": 7000
+          }
+        ],
+        "UpstreamPathTemplate": "/pedido/{everything}",
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
+      },
+      {
+        "DownstreamPathTemplate": "/",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "127.0.0.1",
+            "Port": 8000
+          }
+        ],
+        "UpstreamPathTemplate": "/catalogo/",
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
+      },
+      {
+        "DownstreamPathTemplate": "/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "127.0.0.1",
+            "Port": 8000
+          }
+        ],
+        "UpstreamPathTemplate": "/catalogo/{everything}",
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
+      },
+      {
+        "DownstreamPathTemplate": "/vendas/",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "127.0.0.1",
+            "Port": 3200
+          }
+        ],
+        "UpstreamPathTemplate": "/vendas/",
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete"]
+      },
+      {
+        "DownstreamPathTemplate": "/vendas/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "127.0.0.1",
+            "Port": 3200
+          }
+        ],
+        "UpstreamPathTemplate": "/vendas/{everything}",
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete"]
+      },{
+        "DownstreamPathTemplate": "/produto/",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "127.0.0.1",
+            "Port": 3100
+          }
+        ],
+        "UpstreamPathTemplate": "/produto/",
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete"]
+      },
+      {
+        "DownstreamPathTemplate": "/produto/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "127.0.0.1",
+            "Port": 3100
+          }
+        ],
+        "UpstreamPathTemplate": "/produto/{everything}",
+        "UpstreamHttpMethod": [ "Get"]
+      },    
+      {
+        "DownstreamPathTemplate": "/gestao_pedidos/",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "127.0.0.1",
+            "Port": 3200
+          }
+        ],
+        "UpstreamPathTemplate": "/gestao_pedidos/",
+        "UpstreamHttpMethod": [ "Get"]
+      },
+      {
+        "DownstreamPathTemplate": "/gestao_pedidos/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "127.0.0.1",
+            "Port": 3200
+          }
+        ],
+        "UpstreamPathTemplate": "/gestao_pedidos/{everything}",
+        "UpstreamHttpMethod": [ "Get"]
+      }
+    ],
+    "GlobalConfiguration": { }
+  }
