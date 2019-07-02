@@ -1,93 +1,69 @@
+var contVenda =1;
+var numVenda = 0 ;
+var vendas = [];
+var valorTotal = 0; //valor total da venda 
+
 module.exports = {
     //=========================================================================
     // Retorna dados da venda  
     // =========================================================================
-    get(_, res) {      
-       // ID, valor da venda em reais, a lista e quantidade de cada produtos.
- 
-        let = vendas =[
-           {'id': 1 ,'valorVenda': '200.00','listaProduto':
-            [{'nomeProduto':'Notebook core i5', 'quantidade':1},
-            {'nomeProduto':'Celular Iphone', 'quantidade':2}] },
-         {'id': 1 ,'valorVenda': '200.00','listaProduto':
-            [{'nomeProduto':'Notebook core i5', 'quantidade':1},
-            {'nomeProduto':'Celular Iphone', 'quantidade':2}] }
-            ];        
+    get(_, res) {               
         res.json(vendas);
     },
+  
     //=========================================================================
-    // Altera estado do pedido 
+    // Remove venda 
     // =========================================================================
-    put(req, res) {
-        
-        var  pedido = {'idPedido': 2 ,'dataPedido': '03/06/2019','valorTotal': 2500.00,'estadoPedido':'Cancelado'};
-
-        if (!req.body.id) {
-            res.json(pedido);
-        }
-        res.json(pedido);
-    },
-    //=========================================================================
-    // Registra novo produto 
-    // =========================================================================
-    post(req, res) {        
-        var ret; 
-        console.log(req.body);  
-
-        if(!req.body.id){            
-            var ret = {'msg':'Erro ao registrar pedido!'}
-        }else{
-            var id              = req.body.id; 
-            var valorVenda      = req.body.valorVenda; 
-            var listaProduto    = req.body.listaProduto;
-           
-            if(listaProduto <= 1){                
-                var ret = {'msg':'A quantidade de produtos deve ser maior que 0!'}    
-            }
-            else if(valorVenda <= 0){
-                ret = {'msg':'O valor total do pedido não deve ser igual ou menor que R$ 0.00'}    
-            }
-            else{
-                ret = {'msg':'Venda registrada com sucesso!'}    
-            }
-        }
-        // retorna resultado 
-        res.json(ret);
-    },
-    //=========================================================================
-    // Remove produto  
-    // =========================================================================
-    deleteID(req,res){    
-    var  let = vendas =[
-        {'id': 1 ,'valorVenda': '200.00','listaProduto':
-         [{'nomeProduto':'Notebook core i5', 'quantidade':1},
-         {'nomeProduto':'Celular Iphone', 'quantidade':2}] },
-      {'id': 1 ,'valorVenda': '200.00','listaProduto':
-         [{'nomeProduto':'Notebook core i5', 'quantidade':1},
-         {'nomeProduto':'Celular Iphone', 'quantidade':2}] }
-         ];      
-
+    deleteID(req,res){        
     var id = req.params.id;
      var ret = ""  ;
      var removido = false;
+
     if(!req.params.id){
         ret = 'Venda não encontrada!';
     }else{
-        for(var i =0 ; i < produtos.length; i++){           
-            if(id==produtos[i].id){
-                produtos.splice(i,1);
+        for(var i =0 ; i < vendas.length; i++){           
+            if(id==vendas[i].id){
+
+                vendas.splice(i,1);
                 i--                            
-                removido  =true; // indica que o produto foi removido 
-                ret ='Venda cancelada com sucesso!';
+                removido  = true; // indica que o produto foi removido                             
             }
         }
 
-        if(removido==true){
-            ret ='Produto removido com sucesso!';           
+        if(removido){
+            ret ='Venda cancelada com sucesso!';           
         }else{
-            ret ='Nenhum produto encontrado!';            
+            ret ='Nenhuma venda encontrada!';            
         }
     }          
     res.json({ret:ret});
-}
+    },
+
+    // Adiciona array de produtos na venda 
+    // Realiza o somatório de todos os produtos 
+    add_produto(req,res){
+        let itensVenda = [];
+        let totalVenda  = 0; 
+        var valorTotalVenda = 0; 
+        itensVenda.push(req.body);
+
+        var quant = itensVenda[0].length;
+        // verifica a quantidade de itens que estão na venda 
+        for(var i = 0 ; i < quant; i++){
+           valorItem = 0 ; 
+           valorItem = itensVenda[0][i].valorProduto;
+           valorItem = itensVenda[0][i].valorProduto * itensVenda[0][i].quantidade;
+           valorTotalVenda  += valorItem
+        }
+           
+        vendas = [{'id': 1 ,'valorVenda': valorTotalVenda ,listaProduto:itensVenda, 'totalVenda': valorTotal}];    
+        res.json(vendas);   
+    },
+    // Adiciona nova venda  
+    cria_venda(req,res){
+        // Cria venda 
+        vendas = [{'id': 1 ,'valorVenda': '0.00','listaProduto':[]}];
+        res.json(vendas);   
+    }
 };

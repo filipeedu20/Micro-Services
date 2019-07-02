@@ -72,27 +72,27 @@
         "UpstreamPathTemplate": "/vendas/{everything}",
         "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete"]
       },{
-        "DownstreamPathTemplate": "/produto/",
+        "DownstreamPathTemplate": "/products/",
         "DownstreamScheme": "http",
         "DownstreamHostAndPorts": [
           {
             "Host": "127.0.0.1",
-            "Port": 3100
+            "Port": 4000
           }
         ],
-        "UpstreamPathTemplate": "/produto/",
+        "UpstreamPathTemplate": "/products/",
         "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete"]
       },
       {
-        "DownstreamPathTemplate": "/produto/{everything}",
+        "DownstreamPathTemplate": "/products/{everything}",
         "DownstreamScheme": "http",
         "DownstreamHostAndPorts": [
           {
             "Host": "127.0.0.1",
-            "Port": 3100
+            "Port": 4000
           }
         ],
-        "UpstreamPathTemplate": "/produto/{everything}",
+        "UpstreamPathTemplate": "/products/{everything}",
         "UpstreamHttpMethod": [ "Get"]
       },    
       {

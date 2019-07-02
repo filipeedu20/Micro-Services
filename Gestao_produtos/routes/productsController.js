@@ -1,6 +1,5 @@
-let ListaProdutos = {
+var ListaProdutos = {
     items: [
-
         {
             id: '1',
             name: 'tablet',
@@ -73,5 +72,26 @@ module.exports = {
                 res.json(lista);
             }
         }
+    },
+    /** Altera produto  */
+    put(req, res) {
+        // let retorno = false;
+        let lista = ListaProdutos.items;
+        let pid = req.params.id;
+        let msgRetorno ="";
+
+        for (let i = 0; i < lista.length; i++) {
+            if (lista[i].id == pid) {
+                ListaProdutos.items.push(req.body)
+                retorno = true; //indica que o item foi alterado 
+            }
+        }
+
+        if(retorno){
+            msgRetorno = "Produto alterado com sucesso!";
+        }else{
+            msgRetorno = "Não foi possível alterar o produto!";
+        }
+        res.json(msgRetorno);                
     }
 };
